@@ -1,0 +1,29 @@
+
+.footer{
+    width: 411px;
+  height: 66px;
+  background-color: #f0f0f0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 0 auto;
+
+
+  .iconWrapper{
+    display:flex;
+    gap:32px
+  }
+
+  .iconCircle{
+    width: 41px;
+    height: 41px;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    cursor: pointer;
+    
+  }
+
+}
