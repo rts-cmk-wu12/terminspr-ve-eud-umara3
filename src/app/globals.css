@@ -6,7 +6,15 @@
   color: inherit;
   scroll-behavior: smooth;
   list-style: none;
-  max-width: 480px
+ /* max-width: 480px*/
+}
+
+.wrapper{
+  
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
 }
 
 img {
