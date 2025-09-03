@@ -3,6 +3,8 @@
 
 import { useParams } from "next/navigation";
 import { useEffect, useState } from "react";
+import { getActivityById, joinActivity,leaveActivity } from "@/action/details";
+import "./detail.scss";
 
 export default function ActivityDetailPage() {
     const {id} = useParams();
@@ -12,15 +14,20 @@ export default function ActivityDetailPage() {
 
     useEffect(() => {
         async function fetchData() {
+            console.log("Activity ID from useParams:", id);
+            try{
             const data = await getActivityById(id);
             setActivity(data);
 
             const currentUser = {id:7, age:21};
             setUser(currentUser);
 
-            const isJoined = data.user.some(u => u.id === currentUser.id);
+            const isJoined = data.user?.some(u => u.id === currentUser.id) || false ;
             setJoined(isJoined);
+        } catch (error) {
+            console.error("error fetching data", error)
         }
+    }
         fetchData();
     }, [id]);
 
@@ -43,11 +50,11 @@ export default function ActivityDetailPage() {
     user &&
     user.age >= activity.minAge &&
     user.age <= activity.maxAge &&
-    !joined &&
-    !userHasActivityOnSameWeekDay(user, activity, weekday);
+    !joined;
+    
 
     return(
-        <div className="deatail-page">
+        <div className="detail-page">
             <h1>{activity.name}</h1>
 
 

@@ -1,0 +1,28 @@
+
+
+@import "./src/variables.scss";
+
+.detail-page{
+  max-width: 411px;
+  margin: 0 auto;
+  padding: 24px;
+  background-color: $color-dark-purple;
+  color: $color-light;
+  font-family: $font-body;
+
+  .detail-button{
+    margin-top: 24px;
+  padding: 12px 24px;
+  background-color: $color-pink;
+  color: $color-black;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: $font-size-sm;
+
+  &:disabled {
+    background-color: #ccc;
+    cursor: not-allowed;
+  }
+  }
+}
