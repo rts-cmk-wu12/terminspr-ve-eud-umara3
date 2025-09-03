@@ -22,7 +22,7 @@ export default function ActivityDetailPage() {
             const currentUser = {id:7, age:21};
             setUser(currentUser);
 
-            const isJoined = data.user?.some(u => u.id === currentUser.id) || false ;
+            const isJoined = data.user?.some(user => user.id === currentUser.id) || false ;
             setJoined(isJoined);
         } catch (error) {
             console.error("error fetching data", error)
@@ -55,18 +55,26 @@ export default function ActivityDetailPage() {
 
     return(
         <div className="detail-page">
-            <h1>{activity.name}</h1>
+        <div className="image-container">
+        <img src={activity.asset.url} alt={activity.name} className="activity-image"/>
+        <button className="tilmeld-button" onClick={joined ? handleLeave : handleJoin}>
+          tilmild
+        </button>
+        </div>
+        <div className="activity-info">
+            <h2>{activity.name}</h2>
+            <p><strong>{activity.minAge} {activity.maxAge}</strong></p>
+            <p>{activity.time}</p>
+            <p>{activity.description}</p>
 
+        </div>
 
-            <p><strong>Weekday:</strong> {activity.weekday}</p>
-      <p><strong>Time:</strong> {activity.time}</p>
-      <p><strong>Description:</strong> {activity.description}</p>
-      <p><strong>Age:</strong> {activity.minAge}–{activity.maxAge} years</p>
+           
 
       { user && (
         <button className="detail-button" onClick={joined? handleLeave : handleJoin}
         disabled={!isEligible && !joined}>
-
+         Register
         </button>
 
       )}

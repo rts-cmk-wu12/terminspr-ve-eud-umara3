@@ -1,9 +1,11 @@
 
+import Link from "next/link";
 import "./activity-card.scss";
 //import Image from "next/image";
 
 export default function ActivityCard({activity}) {
     return(
+        <Link href={`/activities/${activity.id}`} className="card-link">
         <div className="wrapper">
         <div className="card">
             <img src={activity.asset.url} alt={activity.name} className="image" />
@@ -13,5 +15,6 @@ export default function ActivityCard({activity}) {
             </div>
         </div>
         </div>
-    )
+        </Link>
+    );
 }

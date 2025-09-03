@@ -14,7 +14,11 @@
   
   box-shadow: 0 4px 12px rgba($color-black, 0.1);
   
-
+ .card-link{
+    text-decoration: none;
+    color: inherit;
+    display: block;
+  }
 
   .image{
   width: 100%;

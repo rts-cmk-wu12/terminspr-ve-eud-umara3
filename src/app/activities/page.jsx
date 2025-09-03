@@ -10,7 +10,8 @@ import ActivityCard from "@/components/activity-card";
 import Footer from "@/components/footer";
 
 
-export default function ActivitiesPage() {
+
+export default function ActivitiesPage({}) {
     const [activities, setActivities] = useState([]);
     const [loading, setLoading] = useState(true);
 
@@ -36,7 +37,9 @@ export default function ActivitiesPage() {
                 )
 
                 }
-            </div>
+            </div> 
+
+            
             <Footer />
         </div>
     )
