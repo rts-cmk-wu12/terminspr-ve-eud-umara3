@@ -14,7 +14,9 @@ import Image from "next/image";
 import { useRouter } from "next/navigation";
 import  "./welcome/welcome.scss";
 
-
+/*export const metadata ={
+  title: "Home",
+}*/
 
 export default function Welcome() {
     const [showButton, setShowButton] = useState(false);
@@ -30,7 +32,7 @@ export default function Welcome() {
     };
 
     return(
-        <div className="wrapper">
+        <div className="welcome">
             <div className="logoContainer">
                 <Image
                 src="/images/Logo (1).png" alt="logo"

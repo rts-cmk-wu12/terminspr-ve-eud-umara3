@@ -4,13 +4,15 @@
 
 .card{
   width: 356px;
-  height: 344px;
+  height: 340px;
   border-radius: 16px;
   overflow: hidden;
   position: relative;
   display: flex;
   flex-direction: column;
-  gap: 16px;
+  margin-bottom: 1em;
+  
+
   
   box-shadow: 0 4px 12px rgba($color-black, 0.1);
   

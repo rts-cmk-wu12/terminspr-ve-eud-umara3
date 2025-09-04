@@ -9,7 +9,9 @@ import { useEffect,useState } from "react";
 import ActivityCard from "@/components/activity-card";
 import Footer from "@/components/footer";
 
-
+/*export const metadata ={
+  title: "Aktiviteter",
+}*/
 
 export default function ActivitiesPage({}) {
     const [activities, setActivities] = useState([]);

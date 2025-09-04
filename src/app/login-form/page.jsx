@@ -1,7 +1,13 @@
 
 "use client";
+import "./login.scss";
 import { useActionState } from "react";
 import doTheLoginThing from "@/action/do-the-login-thing";
+
+
+/*export const metadata ={
+  title: "Login",
+}*/
 
 export default function LoginFormPage() {
     const [formState, formAction, isPending] = useActionState(doTheLoginThing, {
@@ -9,12 +15,14 @@ export default function LoginFormPage() {
         errors: {},
     });
     return(
-        <>
-      <form action={formAction}>
+        <div className="login">
+      <div className="login-box">
+        <h1 className="login-heading">Log ind</h1>
+      <form action={formAction} className="login-form">
         <div>
             <label >
                 
-                <input type="text" name="username" placeholder="brugernavn" />
+                <input type="text" name="username" placeholder="brugernavn" className="login-input"/>
                 
             </label>
             {formState?.errors?.username && (
@@ -25,7 +33,7 @@ export default function LoginFormPage() {
         <div>
             <label >
                 
-                <input type="password" name="password" placeholder="adgangskode" />
+                <input type="password" name="password" placeholder="adgangskode" className="login-input"/>
                 
             </label>
             {formState?.errors?.password && (
@@ -34,12 +42,12 @@ export default function LoginFormPage() {
 
             }
         </div>
-        <button type="submit" disabled={isPending}>
+        <button className="login-button" type="submit" disabled={isPending}>
             {isPending? "Logger ind..." : "Log ind"}
             </button>
       
       </form>
-      
-      </>
+      </div>
+      </div>
     );
 }

@@ -4,10 +4,17 @@
 import { useParams } from "next/navigation";
 import { useEffect, useState } from "react";
 import { getActivityById, joinActivity,leaveActivity } from "@/action/details";
+import { useRouter } from "next/navigation";
 import "./detail.scss";
+
+/*export const metadata ={
+  title: "Aktivitetsdetaljer",
+}*/
+
 
 export default function ActivityDetailPage() {
     const {id} = useParams();
+     const router = useRouter();
     const [activity, setActivity] = useState(null);
     const [user, setUser] = useState(null);
     const [joined, setJoined] = useState(false);
@@ -32,25 +39,55 @@ export default function ActivityDetailPage() {
     }, [id]);
 
     const handleJoin = async () => {
-        if (!user) return;
-        await joinActivity(user.id, activity.id);
-        setJoined(true);
+        if (!user || !activity?.id) return;
+        try{
+         await joinActivity(user.id, activity.id);
+         setJoined(true);
+         alert("Successfully joined the activity!");
+        } catch(error){
+            console.error("faild to join activity", error);
+        }
+       /* await joinActivity(user.id, activity.id);
+        setJoined(true);*/
 
     };
 
-    const handleLeave = async () => {
+   /* const handleLeave = async () => {
        if (!user) return;
         await leaveActivity(user.id, activity.id);
         setJoined(false); 
     };
 
-    if (!activity) return<p>loading..</p>
+    if (!activity) return<p>loading..</p>*/
 
+    
+
+   
+
+    const handleLeave = async () => {
+        if (!user) {
+            router.push("/login-form");
+            return;
+        }
+        if(!activity?.id) return;
+
+        try{
+        await leaveActivity(user.id, activity.id);
+        setJoined(false);
+        alert("you have left the activity");
+        }catch(error){
+        console.error("failed to leave activity", error);
+        }
+        
+
+        
+    };
     const isEligible = 
     user &&
     user.age >= activity.minAge &&
     user.age <= activity.maxAge &&
     !joined;
+    if (!activity) return<p>loading..</p>
     
 
     return(
@@ -61,6 +98,7 @@ export default function ActivityDetailPage() {
           tilmild
         </button>
         </div>
+
         <div className="activity-info">
             <h2>{activity.name}</h2>
             <p><strong>{activity.minAge} {activity.maxAge}</strong></p>
@@ -74,7 +112,7 @@ export default function ActivityDetailPage() {
       { user && (
         <button className="detail-button" onClick={joined? handleLeave : handleJoin}
         disabled={!isEligible && !joined}>
-         Register
+         {joined? "Leave Activity" : "Register"}
         </button>
 
       )}
@@ -82,5 +120,5 @@ export default function ActivityDetailPage() {
         </div>
 
     );
-   }
-    
+   
+} 

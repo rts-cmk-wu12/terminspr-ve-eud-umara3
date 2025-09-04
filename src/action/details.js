@@ -18,6 +18,8 @@ export async function joinActivity(userId, activityId){
     return response.json();
 }
 
+
+
 export async function leaveActivity(userId, activityId) {
     const response = await fetch(`${BASE_URL}/users/${userId}/activities/${activityId}`, {
         method: "DELETE",

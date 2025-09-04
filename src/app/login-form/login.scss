@@ -1,0 +1,82 @@
+
+.login{
+   // position: relative;
+    width: 100vw;
+    height: 100vh;
+    background-image: url('/images/splash-image.jpg'); 
+    background-size: cover;
+    background-position: center;
+    display: flex;
+    margin-left: auto;
+    margin-right: auto;
+    justify-content: center;
+  align-items: center;
+    width: 450px;
+    
+       
+
+    .login-box{
+        width:756.85px ;
+        height:479.94px ;
+        background-color: rgba(94, 46, 83, 0.5);
+        padding: 40px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        //box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+
+    }
+
+    .login-form{
+       /*text-align: center;
+        position: absolute;
+          top: 55%;*/
+     //width: 100%;
+     display: flex;
+     flex-direction: column;
+     align-items: center;
+     gap: 24px;
+          
+           
+    }
+    .login-heading{
+        width: 160px;
+        height: 55px;
+        color: white;
+        text-align: center;
+        margin-bottom: 32px;
+
+    }
+    .login-input{
+       width: 332px;
+  height: 50px;
+  padding: 12px;
+  border: none;
+  border-radius: 8px;
+  background-color: white;
+  font-size: 16px;
+  color: #333; 
+    }
+
+    .login-button{
+       width: 240px;
+  height: 54px;
+  background-color: white;
+  color: #5E2E53;
+  font-weight: bold;
+  font-size: 18px;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+
+  &:hover {
+    background-color: #f0f0f0;
+  }
+
+  &:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+  } 
+    }
+}
