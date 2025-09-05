@@ -6,7 +6,7 @@ import { useSearchParams } from "next/navigation";
 import { useEffect, useState } from "react";
 import Footer from "@/components/footer";
 import SearchBar from "@/components/ui/searchbar";
-import ActivityCard from "@/components/activity-card";
+import ActivityCard from "@/components/ui/activity-card";
 import "./search.scss"
 
 export default function SearchPage() {
@@ -35,10 +35,14 @@ export default function SearchPage() {
         }, [query]);
 
         return(
-            <div className="page">
-                <SearchBar />
-            
+           
+         <div className="page">
+
         <h1 className="page-heading">Søg</h1>
+
+         <div className="page-searchbar">
+                <SearchBar />
+         </div>
 
         <div className="list">
             {loading? (

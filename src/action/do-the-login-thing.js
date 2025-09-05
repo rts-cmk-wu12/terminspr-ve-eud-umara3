@@ -4,8 +4,7 @@
 import { cookies } from "next/headers";
 import z,{ success } from "zod";
 
-//import { cookies } from "next/headers";
-//import z, { success } from "zod";
+
 
 
 export default async function doTheLoginThing(prevState, formData) {
@@ -49,7 +48,7 @@ export default async function doTheLoginThing(prevState, formData) {
         const cookieStore = cookies();
         (await cookieStore).set(
             "AuthToken",
-            JSON.stringify({ userId, username: user.username}),
+            JSON.stringify({ user, username: user.username}),
             { httpOnly: true, maxAge: 60 * 30, path:"/"}
         );
 
@@ -63,62 +62,6 @@ export default async function doTheLoginThing(prevState, formData) {
     }
     }
 
-
-
-
-/*import { cookies } from "next/headers";
-import { z } from "zod";
-
-const loginSchema = z.object({
-  username: z.string().min(1, "Brugernavn skal udfyldes"),
-  password: z.string().min(1, "Adgangskode skal udfyldes"),
-});
-
-export default async function doTheLoginThing(prevState, formData) {
-  const username = formData.get("username");
-  const password = formData.get("password");
-
-  const result = loginSchema.safeParse({ username, password });
-
-  if (!result.success) {
-    return {
-      success: false,
-      errors: result.error.flatten().fieldErrors,
-    };
-  }
-
-  try {
-    const response = await fetch("http://localhost:4000/auth/token", {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ username, password }),
-    });
-
-    if (!response.ok) {
-      return {
-        success: false,
-        errors: { general: "Forkert brugernavn eller adgangskode" },
-      };
-    }
-
-    const user = await response.json();
-
-    const cookieStore = cookies();
-    cookieStore.set(
-      "AuthToken",
-      JSON.stringify({ userId: user.id, username: user.username }),
-      { httpOnly: true, maxAge: 60 * 30, path: "/" }
-    );
-
-    return { success: true, message: "Login lykkedes" };
-  } catch (error) {
-    console.error("Login fejl", error);
-    return {
-      success: false,
-      errors: { general: "Der opstod en fejl under login" },
-    };
-  }
-}*/
 
 
 

@@ -6,7 +6,7 @@ import "./activities.scss";
 
 import { fetchActivities } from "@/action/activities";
 import { useEffect,useState } from "react";
-import ActivityCard from "@/components/activity-card";
+import ActivityCard from "@/components/ui/activity-card";
 import Footer from "@/components/footer";
 
 /*export const metadata ={

@@ -15,15 +15,17 @@ export default function Footer() {
                 <FiHome size={20}/>
             </div>
             </Link>
-            
+
             <Link href="/search">
              <div className="iconCircle">
                 <IoIosSearch  size={20}/>
             </div>
             </Link>
+            <Link href="/calender">
              <div className="iconCircle">
                 <CiCalendar  size={20}/>
             </div>
+            </Link>
         </div>
 
         </footer>

@@ -1,7 +1,6 @@
 
 import Link from "next/link";
 import "./activity-card.scss";
-//import Image from "next/image";
 
 export default function ActivityCard({activity}) {
     return(

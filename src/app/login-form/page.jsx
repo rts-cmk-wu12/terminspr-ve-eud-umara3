@@ -1,8 +1,9 @@
 
 "use client";
 import "./login.scss";
-import { useActionState } from "react";
+import { useActionState, useEffect } from "react";
 import doTheLoginThing from "@/action/do-the-login-thing";
+import { useRouter, useSearchParams } from "next/navigation";
 
 
 /*export const metadata ={
@@ -14,6 +15,16 @@ export default function LoginFormPage() {
         success: false,
         errors: {},
     });
+
+    const searchParams = useSearchParams();
+    const router = useRouter();
+    const redirect = searchParams.get("redirect") || "/";
+
+    useEffect(() => {
+      if(formState.success){
+        router.push(redirect);
+      }
+    },[formState.success, redirect,router]);
     return(
         <div className="login">
       <div className="login-box">
